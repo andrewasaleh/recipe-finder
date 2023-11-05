@@ -1,0 +1,41 @@
+#presentation {
+  width: 100%;
+  height: 500px;
+  background-size: cover;
+  position: relative;
+}
+
+.presentation-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  color: #fff;
+}
+
+#presentation-text h1 {
+  font-size: 36px;
+}
+
+#presentation-text p {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+#presentation-text button {
+  background-color: #ffffff;
+  color: #000000;
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
