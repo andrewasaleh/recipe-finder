@@ -10,7 +10,6 @@ import Presentation from './pages/Home/Preview';
 import Footer from './pages/Home/Footer';
 import Recipes from './pages/Feed/Recipes'; // Import the RecipeComponent
 import Trending from './pages/Feed/Trending';
-// import AuthDetails from './pages/LoginSignup/AuthDetails';
 
 function App() {
   return (

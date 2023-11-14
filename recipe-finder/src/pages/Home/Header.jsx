@@ -1,5 +1,8 @@
 import React from 'react';
+import AuthDetails from '../LoginSignup/AuthDetails'; 
 import './Header.css'; 
+import '../LoginSignup/AuthDetails';
+
 
 function Header() {
   return (
@@ -14,6 +17,7 @@ function Header() {
           <li><a href="/signup">Get Started</a></li>
           <li><a href="/login">Login</a></li>
         </ul>
+        <AuthDetails />
       </nav>
     </header>
   );
