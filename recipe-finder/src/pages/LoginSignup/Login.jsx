@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { getAuth } from 'firebase/auth'; 
-import app from '../../App.js'; 
+import { Link, useNavigate } from 'react-router-dom';
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase";
 import './LoginSignup.css';
 
 const bodyStyle = {
@@ -13,57 +12,62 @@ const bodyStyle = {
   alignItems: 'center',
 };
 
-function Login() {
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
-    try {
-      const auth = getAuth(app); 
-      await signInWithEmailAndPassword(auth, email, password);
-      navigate('/MainContent'); // Redirect to the homepage after a successful login
-    } catch (error) {
-      console.error('Error logging in:', error.message);
-    }
-  }
+  const login = (e) => {
+    e.preventDefault();
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      console.log(userCredential);
+      navigate('/recipes');
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+      
 
-  return (
-    <div style={bodyStyle}>
-      <div className="container">
-        <div className="header">
-          <div className="text">Login</div>
-          <div className="description">Get ready to share your recipes!</div>
+return (
+  <div style={bodyStyle}>
+    <div className="container">
+      <div className="header">
+        <div className="text">Login</div>
+        <div className="description">Get ready to share your recipes!</div>
+      </div>
+      <div className="inputs">
+      <form onSubmit={login}>
+        <label>Email</label>
+        <div className="input">
+          <input
+            type="email"
+            placeholder="Enter Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </div>
-        <div className="inputs">
-          <authlabel>Email</authlabel>
-          <div className="input">
-            <input
-              type="email"
-              placeholder="Enter Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <authlabel>Password</authlabel>
-          <div className="input">
-            <input
-              type="password"
-              placeholder="Enter Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
+        <label>Password</label>
+        <div className="input">
+          <input
+            type="password"
+            placeholder="Enter Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </div>
-        <div className="continue-button" onClick={handleLogin}>
-          Sign in
-        </div>
-        <div className="redirect-signup">
-          Don't have an account? <Link to="/signup">Sign Up</Link>
-        </div>
+        </form>
+      </div>
+      <div className="continue-button" onClick={login}>
+        Sign in
+      </div>
+      <div className="redirect-signup">
+        Don't have an account? <Link to="/signup">Sign Up</Link>
       </div>
     </div>
-  );
+  </div>
+);
 }
 
 export default Login;

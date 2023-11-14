@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { getAuth } from 'firebase/auth';
+import { Link, useNavigate } from 'react-router-dom';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../firebase';
 import './LoginSignup.css';
 
 import showPasswordIcon from '../Assets/images/LoginSignup/show-image.png';
@@ -16,7 +16,6 @@ const bodyStyle = {
 };
 
 function Signup() {
-  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [reenteredPassword, setReenteredPassword] = useState('');
@@ -24,7 +23,9 @@ function Signup() {
   const [passwordMatch, setPasswordMatch] = useState(true); // Password match state
   const navigate = useNavigate();
 
-  const handleSignup = async () => {
+  const signup = (e) => {
+    e.preventDefault();
+
     if (password !== reenteredPassword) {
       setPasswordMatch(false);
       return;
@@ -32,18 +33,19 @@ function Signup() {
       setPasswordMatch(true);
     }
 
-    try {
-      await createUserWithEmailAndPassword(getAuth, email, password);
-
-      navigate('/MainContent'); 
-    } catch (error) {
-      console.error("Error signing up:", error.message);
-    }
-  }
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        console.log(userCredential);
+        navigate('/Login');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
-  }
+  };
 
   return (
     <div style={bodyStyle}>
@@ -53,50 +55,43 @@ function Signup() {
           <div className="description">Create a new account to get started.</div>
         </div>
         <div className="inputs">
-        <authlabel>Full Name</authlabel>
-          <div className={`input ${!passwordMatch ? 'input-error' : ''}`}>
-            <input
-              type="text"
-              placeholder="Enter Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </div>
-          <authlabel>Email</authlabel>
-          <div className={`input ${!passwordMatch ? 'input-error' : ''}`}>
-            <input
-              type="email"
-              placeholder="Enter Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <authlabel>Password</authlabel>
-          <div className={`input ${!passwordMatch ? 'input-error' : ''}`}>
-            <input
-              type={showPassword ? "text" : "password"}
-              placeholder="Enter Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <div className="password-toggle" onClick={togglePasswordVisibility}>
-              <img src={showPassword ? hidePasswordIcon : showPasswordIcon} alt="Toggle Password" />
+          <form onSubmit={signup}>
+            <label>Email</label>
+            <div className={`input ${!passwordMatch ? 'input-error' : ''}`}>
+              <input
+                type="email"
+                placeholder="Enter Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </div>
-          </div>
-          <authlabel>Confirm Password</authlabel>
-          <div className={`input ${!passwordMatch ? 'input-error' : ''}`}>
-            <input
-              type={showPassword ? "text" : "password"}
-              placeholder="Re-enter Password"
-              value={reenteredPassword}
-              onChange={(e) => setReenteredPassword(e.target.value)}
-            />
-            <div className="password-toggle" onClick={togglePasswordVisibility}>
-              <img src={showPassword ? hidePasswordIcon : showPasswordIcon} alt="Toggle Password" />
+            <label>Password</label>
+            <div className={`input ${!passwordMatch ? 'input-error' : ''}`}>
+              <input
+                type={showPassword ? 'text' : 'password'}
+                placeholder="Enter Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <div className="password-toggle" onClick={togglePasswordVisibility}>
+                <img src={showPassword ? hidePasswordIcon : showPasswordIcon} alt="Toggle Password" />
+              </div>
             </div>
-          </div>
+            <label>Confirm Password</label>
+            <div className={`input ${!passwordMatch ? 'input-error' : ''}`}>
+              <input
+                type={showPassword ? 'text' : 'password'}
+                placeholder="Re-enter Password"
+                value={reenteredPassword}
+                onChange={(e) => setReenteredPassword(e.target.value)}
+              />
+              <div className="password-toggle" onClick={togglePasswordVisibility}>
+                <img src={showPassword ? hidePasswordIcon : showPasswordIcon} alt="Toggle Password" />
+              </div>
+            </div>
+          </form>
         </div>
-        <div className="continue-button" onClick={handleSignup}>
+        <div className="continue-button" onClick={signup}>
           Create an account
         </div>
         <div className="redirect-login">
