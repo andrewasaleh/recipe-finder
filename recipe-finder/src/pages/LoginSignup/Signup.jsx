@@ -18,15 +18,15 @@ const bodyStyle = {
 function Signup() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [reenteredPassword, setReenteredPassword] = useState('');
+  const [confirmedPassword, setConfirmedPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [passwordMatch, setPasswordMatch] = useState(true); // Password match state
+  const [passwordMatch, setPasswordMatch] = useState(true);
   const navigate = useNavigate();
 
   const signup = (e) => {
     e.preventDefault();
 
-    if (password !== reenteredPassword) {
+    if (password !== confirmedPassword) {
       setPasswordMatch(false);
       return;
     } else {
@@ -36,7 +36,7 @@ function Signup() {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log(userCredential);
-        navigate('/Login');
+        navigate('/recipes');
       })
       .catch((error) => {
         console.log(error);
@@ -82,8 +82,8 @@ function Signup() {
               <input
                 type={showPassword ? 'text' : 'password'}
                 placeholder="Re-enter Password"
-                value={reenteredPassword}
-                onChange={(e) => setReenteredPassword(e.target.value)}
+                value={confirmedPassword}
+                onChange={(e) => setConfirmedPassword(e.target.value)}
               />
               <div className="password-toggle" onClick={togglePasswordVisibility}>
                 <img src={showPassword ? hidePasswordIcon : showPasswordIcon} alt="Toggle Password" />
