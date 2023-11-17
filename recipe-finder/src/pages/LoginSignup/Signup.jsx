@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../../firebase';
 import './LoginSignup.css';
 
@@ -16,31 +16,55 @@ const bodyStyle = {
 };
 
 function Signup() {
+  const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmedPassword, setConfirmedPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [passwordMatch, setPasswordMatch] = useState(true);
+  const [showPasswordError, setShowPasswordError] = useState(false);
+  const [emailExists, setEmailExists] = useState(false);
+  const [passwordLengthError, setPasswordLengthError] = useState(false);
   const navigate = useNavigate();
 
-  const signup = (e) => {
+  
+  const signup = async (e) => {
     e.preventDefault();
+
+    // Reset all error states
+    setEmailExists(false);
+    setPasswordMatch(true);
+    setShowPasswordError(false);
+    setPasswordLengthError(false);
+
+    if (password.length < 6) {
+      setPasswordLengthError(true);
+      return;
+    }
 
     if (password !== confirmedPassword) {
       setPasswordMatch(false);
+      setShowPasswordError(true);
       return;
-    } else {
-      setPasswordMatch(true);
     }
 
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        console.log(userCredential);
-        navigate('/recipes');
-      })
-      .catch((error) => {
-        console.log(error);
+    try {
+      // Create user account
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+
+      // Log the user credential to the console
+      console.log(userCredential);
+
+      // Update user profile with full name
+      await updateProfile(userCredential.user, {
+        displayName: fullName,
       });
+
+      // Navigate to '/recipes'
+      navigate('/recipes');
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const togglePasswordVisibility = () => {
@@ -56,17 +80,34 @@ function Signup() {
         </div>
         <div className="inputs">
           <form onSubmit={signup}>
+            <label>Full Name</label>
+            <div className="input">
+              <input
+                type="text"
+                placeholder="Enter Full Name"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+              />
+            </div>
             <label>Email</label>
-            <div className={`input ${!passwordMatch ? 'input-error' : ''}`}>
+            <div className={`input ${emailExists ? 'email-error' : ''}`}>
               <input
                 type="email"
                 placeholder="Enter Email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  setEmailExists(false);
+                }}
               />
             </div>
+            {emailExists && (
+              <div className="error-box">
+                Email already exists. Please use a different email.
+              </div>
+            )}
             <label>Password</label>
-            <div className={`input ${!passwordMatch ? 'input-error' : ''}`}>
+            <div className={`input ${!passwordMatch || passwordLengthError ? 'input-error' : ''}`}>
               <input
                 type={showPassword ? 'text' : 'password'}
                 placeholder="Enter Password"
@@ -77,6 +118,11 @@ function Signup() {
                 <img src={showPassword ? hidePasswordIcon : showPasswordIcon} alt="Toggle Password" />
               </div>
             </div>
+            {passwordLengthError && (
+              <div className="error-box">
+                Password must be at least 6 characters long.
+              </div>
+            )}
             <label>Confirm Password</label>
             <div className={`input ${!passwordMatch ? 'input-error' : ''}`}>
               <input
@@ -89,6 +135,11 @@ function Signup() {
                 <img src={showPassword ? hidePasswordIcon : showPasswordIcon} alt="Toggle Password" />
               </div>
             </div>
+            {showPasswordError && (
+              <div className="error-box">
+                Passwords do not match. Please try again.
+              </div>
+            )}
           </form>
         </div>
         <div className="continue-button" onClick={signup}>

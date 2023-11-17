@@ -4,12 +4,14 @@ import Login from './pages/LoginSignup/Login';
 import Signup from './pages/LoginSignup/Signup';
 import Navbar from './pages/Home/Header';
 import Header from './pages/Home/Opening';
-// import Feature from './pages/Home/Feature';
 import About from './pages/Home/About';
 import Presentation from './pages/Home/Preview';
 import Footer from './pages/Home/Footer';
-import Recipes from './pages/Feed/Recipes'; // Import the RecipeComponent
 import Trending from './pages/Feed/Trending';
+// import RecipeEntryForm from './pages/Feed/RecipeEntryForm';
+import RecipeComponent from './pages/Feed/RecipeComponent';
+import RecipeForm from './pages/Feed/RecipeForm';
+
 
 function App() {
   return (
@@ -27,11 +29,12 @@ function App() {
                 <Trending />
                 <Presentation />
                 <About />
+                {/* Add a new route for the RecipeComponent */}
               </>
             }
           />
-          {/* Add a new route for the RecipeComponent */}
-          <Route path="/Recipes" element={<Recipes />} />
+        <Route path="/recipes" element={<RecipeComponent />} />
+        <Route path="/add-recipes" element={<RecipeForm />} />
         </Routes>
         <Footer />
       </Router>

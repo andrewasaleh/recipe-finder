@@ -1,5 +1,5 @@
 import React from 'react';
-import './About.css'; // Correct the import statement for the CSS file
+import './About.css'; 
 import previewImage from '../Assets/images/home/preview.png';
 
 function About() {
