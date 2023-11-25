@@ -13,19 +13,24 @@ function Trending() {
     }, []);
 
     const getTrending = async () => {
-        const check = localStorage.getItem('trending');
+        try {    
+            const check = localStorage.getItem('trending');
 
-        if (check) {
-            setTrending(JSON.parse(check));
-        } else {
-            const api = await fetch(
-                `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_SPOON_KEY}&number=8`
-            );
-            const data = await api.json();
+            if (check) {
+                setTrending(JSON.parse(check));
+            } else {
+                const api = await fetch(
+                    `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_SPOON_KEY}&number=8`
+                );
+                const data = await api.json();
 
-            localStorage.setItem("trending", JSON.stringify(data.recipes));
-            setTrending(data.recipes);
-            console.log(data.recipes);
+                localStorage.setItem("trending", JSON.stringify(data.recipes));
+                setTrending(data.recipes);
+                console.log(data.recipes);
+            }
+        } catch (error) {
+            console.error('Error parsing JSON from local storage:', error);
+            // Handle the error, maybe remove the invalid data from local storage or set default state
         }
     };
 
