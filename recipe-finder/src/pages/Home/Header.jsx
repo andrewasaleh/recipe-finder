@@ -1,24 +1,19 @@
 import React from 'react';
-import AuthDetails from '../LoginSignup/AuthDetails'; 
-import './Header.css'; 
-import '../LoginSignup/AuthDetails';
-
+import './Header.css';
 
 function Header() {
   return (
-    <header>
-      <nav>
+    <header className="header-container">
+      <nav className="nav-bar">
         <div className="logo">
-          <a href="/">RecipeFinder</a>
+          <a href="/" className="brand-name"> 🥣 RecipeFinder</a>
         </div>
         <ul className="nav-links">
-          <li><a href="/">Home</a></li>
-          <li><a href="/recipes">Recipes</a></li>
-          <li><a href="/add-recipes">Add Recipes</a></li>
-          <li><a href="/signup">Get Started</a></li>
-          <li><a href="/login">Login</a></li>
+          <li><a href="/" className="nav-link">Home</a></li>
+          <li><a href="/recipes" className="nav-link">Explore Recipes</a></li>
+          <li><a href="/signup" className="nav-link">Join the Culinary Adventure</a></li>
+          <li><a href="/login" className="nav-link rounded-login-button">Login</a></li>
         </ul>
-        <AuthDetails />
       </nav>
     </header>
   );

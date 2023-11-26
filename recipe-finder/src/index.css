@@ -1,13 +1,23 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Raleway', sans-serif; /* Use a stylish font */
+  background-color: #f7f7f7; /* A light background color */
+  color: #333; /* Dark text color for better readability */
+  line-height: 1.6; /* Improved line height */
+  transition: background-color 0.3s ease-in-out; /* Smooth background color transition */
+
+  /* Optional: Add a background pattern or image */
+  /* background-image: url('your-pattern-image.jpg'); */
+  /* background-repeat: repeat; */
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: 'Fira Code', monospace; /* Use a monospace font for code */
+  color: #d35400; /* A stylish color for code text */
+}
+
+/* Optional: Hover effect on code */
+code:hover {
+  background-color: #ecf0f1; /* Light background on hover */
+  transition: background-color 0.3s ease-in-out;
 }

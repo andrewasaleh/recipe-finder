@@ -7,10 +7,8 @@ import Header from './pages/Home/Opening';
 import About from './pages/Home/About';
 import Presentation from './pages/Home/Preview';
 import Footer from './pages/Home/Footer';
-import Trending from './pages/Feed/Trending';
-// import RecipeEntryForm from './pages/Feed/RecipeEntryForm';
 import RecipeComponent from './pages/Feed/RecipeComponent';
-import RecipeForm from './pages/Feed/RecipeForm';
+import Home from './pages/Feed/Home';
 
 
 function App() {
@@ -26,15 +24,13 @@ function App() {
             element={
               <>
                 <Header />
-                <Trending />
+                <Home />
                 <Presentation />
                 <About />
-                {/* Add a new route for the RecipeComponent */}
               </>
             }
           />
         <Route path="/recipes" element={<RecipeComponent />} />
-        <Route path="/add-recipes" element={<RecipeForm />} />
         </Routes>
         <Footer />
       </Router>

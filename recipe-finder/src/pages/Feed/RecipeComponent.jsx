@@ -1,9 +1,9 @@
-// src/RecipeComponent.jsx
 import React, { useState, useEffect } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase';
 import './RecipeComponent.css'; 
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import RecipeFormButton from './RecipeFormButton'; // Import the RecipeFormButton component
 
 const RecipeComponent = () => {
   const [recipes, setRecipes] = useState([]);
@@ -37,6 +37,7 @@ const RecipeComponent = () => {
   return (
     <div className="recipe-container">
       <h2 className="recipe-title">Recipes</h2>
+      <RecipeFormButton /> {/* Add the RecipeFormButton component here */}
       {loading ? (
         <p>Loading...</p>
       ) : (

@@ -4,7 +4,7 @@ import { onAuthStateChanged, signOut } from 'firebase/auth';
 import './AuthDetails.css';
 
 const AuthDetails = () => {
-    const [authUser, setAuthUser] = useState(null);
+    const [authUser, setAuthUser] = useState(undefined);
 
     useEffect(() => {
         const listen = onAuthStateChanged(auth, (user) => {
@@ -24,6 +24,11 @@ const AuthDetails = () => {
         signOut(auth).then(() => {
             console.log('sign out successful')
         }).catch(error => console.log(error))
+    }
+
+    // Do not render anything if authUser is undefined
+    if (authUser === undefined) {
+        return null;
     }
 
     return (

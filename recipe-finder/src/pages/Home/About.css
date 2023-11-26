@@ -1,15 +1,64 @@
-.about-us {
+.about-content {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  padding: 40px;
 }
 
 .about-text {
-  flex: 1;
-  padding: 20px;
+  text-align: center;
+  max-width: 600px;
+  margin-bottom: 50px;
 }
 
-.about-image img {
-  width: 300px; 
+.about-text h2 {
+  font-size: 3rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.about-text h2::after {
+  content: '';
+  display: block;
+  width: 50%;
+  height: 0.2rem;
+  background: linear-gradient(to right, #FCC419, #ffbf00);
+  position: absolute;
+  bottom: 0;
+  left: 25%;
+}
+
+.about-text p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+.contributors-section {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.contributor {
+  text-align: center;
+  margin: 20px;
+}
+
+.contributor img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.contributor p {
+  margin: 0;
+  font-size: 1rem;
+  color: #444;
+}
+
+.contributor:hover {
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
 }

@@ -1,41 +1,63 @@
+/* Preview.css */
 #presentation {
-  width: 100%;
-  height: 500px;
-  background-size: cover;
   position: relative;
+  height: 40vh;
+  max-width: 1300px; /* Set a maximum width to restrict sizing */
+  width: 100%; /* Make sure it takes 100% width within the container */
+  margin: 50px auto; /* Center the section horizontally with top and bottom margin */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
 }
 
-.presentation-overlay {
+.tint-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); /* Adjust the alpha value for the desired tint */
+}
+
+.presentation-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
   color: #fff;
+  z-index: 1; /* Ensure text is above the tint overlay */
 }
 
-#presentation-text h1 {
-  font-size: 36px;
+#presentation-text {
+  text-align: center;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Adjust the shadow values for desired effect */
 }
 
-#presentation-text p {
-  font-size: 20px;
-  margin-top: 10px;
+.preview-title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
 }
 
-#presentation-text button {
-  background-color: #ffffff;
-  color: #000000;
+.preview-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.explore-button {
+  background-color: #FCC419;
+  color: #333;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
   border: none;
-  padding: 10px 20px;
-  font-size: 18px;
-  margin-top: 20px;
+  border-radius: 15px;
   cursor: pointer;
-  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.explore-button:hover {
+  background-color: #ffbf0090;
 }
