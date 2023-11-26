@@ -50,6 +50,7 @@ const RecipeComponent = () => {
                   <strong className="recipe-name">{recipe.name}</strong>
                   <p className="recipe-description">Posted by: {user ? user.displayName : 'Unknown User'}</p>
                   <p className="recipe-description">Duration: {recipe.duration} minutes</p>
+                  <p className="recipe-description">Serving size: for {recipe.serving_size} people</p>
                   <p className="recipe-description">Ingredients:</p>
                   {recipe.ingredients && recipe.ingredients.length > 0 ? (
                     <ul>

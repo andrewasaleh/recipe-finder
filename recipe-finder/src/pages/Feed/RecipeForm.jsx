@@ -9,6 +9,7 @@ const RecipeForm = () => {
     name: '',
     type: '',
     duration: '',
+    serving_size: '',
     ingredients: [''],
     preparation: [''],
     image: '',
@@ -81,6 +82,7 @@ const RecipeForm = () => {
         name: '',
         type: '',
         duration: '',
+        serving_size: '',
         ingredients: [''],
         preparation: [''],
         image: '',
@@ -90,35 +92,70 @@ const RecipeForm = () => {
       console.error('Error adding recipe: ', error);
     }
   };
-  
+
   return (
     <form className="recipe-form-container" onSubmit={handleSubmit}>
-      <label>
+      <h2>
+      <div style={{ fontSize: 40}}>
+        Welcome {recipeData.username}, Share us your idea
+      </div>
+      </h2>
+
+
+      <box> </box>
+
+      {/*<label>
         Username:
         <input type="text" name="username" value={recipeData.username} onChange={handleInputChange} disabled />
       </label>
-      <br />
+      <br />*/}
+
+      <div class="container3">
+      <text_border>
+      <label>
+      Title of the Recipe :
+      </label>      
+      <input type="text" name="name" value={recipeData.name} onChange={handleInputChange} />
+      </text_border>
+      </div>
       
-      <label>
-        Name:
-        <input type="text" name="name" value={recipeData.name} onChange={handleInputChange} />
-      </label>
       <br />
 
+      <div class="container3">
+      <text_border>
       <label>
-        Type:
-        <input type="text" name="type" value={recipeData.type} onChange={handleInputChange} />
+        Type of Food : 
       </label>
+      <input type="text" name="type" value={recipeData.type} onChange={handleInputChange} />
+      </text_border>
+      
+      <test>
+      <text_border>
+      <label>
+        Duration (minutes) : 
+      </label>
+      <input type="number" name="duration" value={recipeData.duration} onChange={handleInputChange} />
+      </text_border>
+      </test>
+      
+      
+      <test>
+      <text_border>
+      <label>
+        Serving size : 
+      </label>
+      <input type="number" name="serving_size" value={recipeData.serving_size} onChange={handleInputChange} />
+      </text_border>
+      </test>
+
+      </div>
+      
+
       <br />
 
+      <div class="container2">
       <label>
-        Duration (minutes):
-        <input type="number" name="duration" value={recipeData.duration} onChange={handleInputChange} />
-      </label>
-      <br />
-
-      <label>
-        Ingredients:
+        Ingredients :
         <ul>
           {recipeData.ingredients.map((ingredient, index) => (
             <li key={index}>
@@ -134,10 +171,13 @@ const RecipeForm = () => {
           Add Ingredient
         </button>
       </label>
+      </div>
+      
       <br />
 
+      <div class="container2">
       <label>
-        Preparation:
+        Preparation :
         <ol>
           {recipeData.preparation.map((step, index) => (
             <li key={index}>
@@ -153,15 +193,20 @@ const RecipeForm = () => {
           Add Preparation Step
         </button>
       </label>
+      </div>
       <br />
 
+      <div class="container2">
       <label>
-        Image URL:
-        <input type="text" name="image" value={recipeData.image} onChange={handleInputChange} />
+        Image URL : 
       </label>
+        <input type="text" name="image" value={recipeData.image} onChange={handleInputChange} />
+      </div>
       <br />
 
+      <div class="container3">
       <button type="submit">Submit Recipe</button>
+      </div>
     </form>
   );
 };
