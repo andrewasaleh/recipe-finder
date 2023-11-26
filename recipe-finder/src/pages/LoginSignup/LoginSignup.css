@@ -17,7 +17,7 @@
 .container img {
   max-width: 100%;
   max-height: 100%;
-  object-fit: cover; /* Adjust the image's size to cover the container */
+  object-fit: cover; 
 }
 
   
@@ -141,13 +141,13 @@ label {
   }
   
   .input-error {
-    border: 1px solid #ff0000; /* Red border color for password fields */
-    outline: none; /* Remove default outline */
-    box-shadow: 0 0 5px #ff0000; /* Add red box-shadow for emphasis */
+    border: 1px solid #ff0000; 
+    outline: none;
+    box-shadow: 0 0 5px #ff0000; 
   }
   
   .error-box {
-    color: #ff0000; /* Red text color */
+    color: #ff0000; 
     margin-top: 10px;
   }
   
@@ -225,8 +225,8 @@ label {
 }
 
 .email-error {
-  border: 1px solid #ff0000; /* Red border color for email field */
-  outline: none; /* Remove default outline */
-  box-shadow: 0 0 5px #ff0000; /* Add red box-shadow for emphasis */
+  border: 1px solid #ff0000; 
+  outline: none;
+  box-shadow: 0 0 5px #ff0000; 
 }
 

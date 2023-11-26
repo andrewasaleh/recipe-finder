@@ -43,7 +43,6 @@ const SearchPage = () => {
       <h1 className="popular-title">What's on the Menu Today?</h1>
         <h1 className="section-title">Find Recipes with Your Favorite Ingredients</h1>
 
-        {/* Add the search input and button */}
         <div className="search-container">
           <input
             type="text"
@@ -54,7 +53,6 @@ const SearchPage = () => {
           <button onClick={handleSearch}>Search</button>
         </div>
 
-        {/* Use the SearchResults component */}
         <SearchResults searchResults={searchResults} />
       </div>
     </div>

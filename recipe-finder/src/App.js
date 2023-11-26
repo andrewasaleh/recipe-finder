@@ -8,7 +8,7 @@ import About from './pages/Home/About';
 import Presentation from './pages/Home/Preview';
 import Footer from './pages/Home/Footer';
 import RecipeComponent from './pages/Feed/RecipeComponent';
-import Home from './pages/Feed/Home';
+import Home from './pages/Menu/Home';
 
 
 function App() {

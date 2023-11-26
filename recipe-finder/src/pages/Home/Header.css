@@ -55,8 +55,6 @@ nav {
   transform-origin: bottom left;
 }
 
-
-
 header::before {
   content: '';
   position: absolute;
@@ -75,42 +73,40 @@ header:hover::before {
   transform-origin: bottom left;
 }
 
-/* Media Query for Medium-sized Screens (769px to 1023px) */
 @media (min-width: 769px) and (max-width: 1023px) {
   nav {
-    padding: 0 20px; /* Adjust padding for medium-sized screens */
+    padding: 0 20px; 
   }
 
   .nav-links a {
-    font-size: 14px; /* Reduce font size for medium-sized screens */
+    font-size: 14px; 
   }
 
   .nav-links > li > a.rounded-login-button {
-    border-radius: 15px; /* Adjust the value for button roundness on medium-sized screens */
+    border-radius: 15px; 
   }
 }
 
-/* Media Query for Small-sized Screens (0px to 768px) */
 @media (max-width: 768px) {
   nav {
-    flex-direction: column; /* Stack navigation links in a column on small screens */
-    align-items: flex-start; /* Align items to the start of the container */
+    flex-direction: column; 
+    align-items: flex-start; 
   }
 
   .nav-links {
-    margin-top: 10px; /* Add some space between the logo and navigation links */
+    margin-top: 10px; 
   }
 
   .nav-links li {
-    margin-right: 0; /* Remove margin between navigation links on small screens */
-    margin-bottom: 10px; /* Add some vertical space between navigation links */
+    margin-right: 0; 
+    margin-bottom: 10px;
   }
 
   .nav-links a {
-    font-size: 14px; /* Reduce font size for small screens */
+    font-size: 14px;
   }
 
   .nav-links > li > a.rounded-login-button {
-    border-radius: 15px; /* Adjust the value for button roundness on small screens */
+    border-radius: 15px; 
   }
 }

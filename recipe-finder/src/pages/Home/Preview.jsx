@@ -1,4 +1,3 @@
-// Preview.js
 import React from 'react';
 import './Preview.css';
 import previewImage from '../Assets/images/home/preview.png';

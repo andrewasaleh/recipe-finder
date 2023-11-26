@@ -6,14 +6,12 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
 
 const SearchResults = ({ searchResults }) => {
-  // Ensure that searchResults is an array before rendering
   if (!Array.isArray(searchResults)) {
     return null;
   }
 
   return (
     <div className="wrapper">
-      {/* Only render the section title if there are search results */}
       {searchResults.length > 0 && (
         <h1 className="section-title">Search Results</h1>
       )}

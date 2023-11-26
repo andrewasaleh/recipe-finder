@@ -1,10 +1,9 @@
-/* Preview.css */
 #presentation {
   position: relative;
-  height: 40vh;
-  max-width: 1300px; /* Set a maximum width to restrict sizing */
-  width: 100%; /* Make sure it takes 100% width within the container */
-  margin: 50px auto; /* Center the section horizontally with top and bottom margin */
+  height: 30vh;
+  max-width: 1300px; 
+  width: 100%; 
+  margin: 50px auto; 
   background-size: cover;
   background-position: center;
   display: flex;
@@ -17,7 +16,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); /* Adjust the alpha value for the desired tint */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
 }
 
 .presentation-overlay {
@@ -27,13 +26,13 @@
   transform: translate(-50%, -50%);
   text-align: center;
   color: #fff;
-  z-index: 1; /* Ensure text is above the tint overlay */
+  z-index: 1; 
 }
 
 #presentation-text {
   text-align: center;
   color: #fff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); /* Adjust the shadow values for desired effect */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); 
 }
 
 .preview-title {

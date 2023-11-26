@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import RecipeForm from './RecipeForm'; // Import the RecipeForm component
+import RecipeForm from './RecipeForm'; 
 
 const RecipeFormButton = () => {
   const [isPopupOpen, setPopupOpen] = useState(false);
@@ -19,7 +19,6 @@ const RecipeFormButton = () => {
       {isPopupOpen && (
         <div className="popup-overlay">
           <div className="popup-inner">
-            {/* Pass a function to handle the close event from the child component */}
             <RecipeForm onClose={handlePopupClose} />
           </div>
         </div>

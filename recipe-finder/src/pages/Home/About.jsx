@@ -36,7 +36,7 @@ function About() {
     };
 
     fetchData();
-  }, [contributors]); // Update the dependency array to re-run the effect when contributors change
+  }, [contributors]); 
 
   return (
     <section className="about-us">

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import './RecipeForm.css'; // Import the external CSS file
+import './RecipeForm.css'; 
 
 const RecipeForm = () => {
   const [recipeData, setRecipeData] = useState({
@@ -12,14 +12,14 @@ const RecipeForm = () => {
     ingredients: [''],
     preparation: [''],
     image: '',
-    username: '', // Add username property
+    username: '', 
   });
 
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        // If a user is logged in, set the username in the recipeData
+
         setRecipeData((prevData) => ({
           ...prevData,
           username: user.displayName || user.email,
@@ -28,7 +28,7 @@ const RecipeForm = () => {
     });
 
     return () => unsubscribe();
-  }, []); // Empty dependency array ensures the effect runs only once on mount
+  }, []); 
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -96,7 +96,6 @@ const RecipeForm = () => {
       <label>
         Username:
         <input type="text" name="username" value={recipeData.username} onChange={handleInputChange} disabled />
-        {/* Disable editing of username to prevent user modification */}
       </label>
       <br />
       

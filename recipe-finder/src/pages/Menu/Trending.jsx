@@ -1,4 +1,3 @@
-// Dessert.js
 import timeIcon from "../Assets/images/home/alarm.png";
 import servingsIcon from "../Assets/images/home/servings.png";
 
@@ -7,18 +6,18 @@ import "@splidejs/splide/dist/css/splide.min.css";
 import "./Styles.css";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 
-function Dessert() {
-  const [Dessert, setDessert] = useState([]);
+function Trending() {
+  const [trending, setTrending] = useState([]);
 
   useEffect(() => {
-    getDessert();
+    getTrending();
   }, []);
 
-  const getDessert = async () => {
-    const check = localStorage.getItem("Dessert");
+  const getTrending = async () => {
+    const check = localStorage.getItem("trending");
 
     if (check) {
-      setDessert(JSON.parse(check));
+      setTrending(JSON.parse(check));
     } else {
       const api = await fetch(
         `https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_SPOON_KEY}&number=8`
@@ -36,8 +35,8 @@ function Dessert() {
         })
       );
 
-      localStorage.setItem("Dessert", JSON.stringify(detailedRecipes));
-      setDessert(detailedRecipes);
+      localStorage.setItem("trending", JSON.stringify(detailedRecipes));
+      setTrending(detailedRecipes);
       console.log(detailedRecipes);
     }
   };
@@ -45,7 +44,7 @@ function Dessert() {
   return (
     <div>
       <div className="wrapper">
-        <h1 className="section-title">Dessert Picks</h1>
+        <h1 className="section-title">Popular Picks</h1>
         <Splide
           options={{
             perPage: 4,
@@ -56,7 +55,7 @@ function Dessert() {
             autoplay: true,
           }}
         >
-          {Dessert.map((recipe) => (
+          {trending.map((recipe) => (
             <SplideSlide key={recipe.id}>
               <div className="card">
                 <a
@@ -105,4 +104,4 @@ function Dessert() {
   );
 }
 
-export default Dessert;
+export default Trending;

@@ -13,7 +13,6 @@ const RecipeEntry = () => {
     <div>
       <h2>Submit a New Recipe</h2>
       <RecipeEntryForm addRecipe={addRecipe} />
-      {/* Display existing recipes */}
       <ul>
         {recipes.map((recipe, index) => (
           <li key={index}>{recipe.name}</li>
