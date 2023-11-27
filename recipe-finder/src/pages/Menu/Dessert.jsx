@@ -1,4 +1,3 @@
-// Dessert.js
 import React, { useEffect, useState } from "react";
 import timeIcon from "../Assets/images/home/alarm.png";
 import servingsIcon from "../Assets/images/home/servings.png";

@@ -5,6 +5,7 @@ import createdByIcon from "../Assets/images/home/created.png";
 
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
+import { Link } from 'react-router-dom';
 
 const SearchResults = ({ searchResults }) => {
   if (!Array.isArray(searchResults)) {
@@ -36,12 +37,7 @@ const SearchResults = ({ searchResults }) => {
         {searchResults.map((recipe) => (
           <SplideSlide key={recipe.id}>
             <div className="card">
-              <a
-                href={recipe.sourceUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="card-details"
-              >
+            <Link to={`/recipe/${recipe.id}`} className="card-details">
                 <div className="card-image">
                   <img src={recipe.image} alt={recipe.title} />
                 </div>
@@ -74,7 +70,7 @@ const SearchResults = ({ searchResults }) => {
                     </div>
                   </div>
                 </div>
-              </a>
+              </Link>
             </div>
           </SplideSlide>
         ))}

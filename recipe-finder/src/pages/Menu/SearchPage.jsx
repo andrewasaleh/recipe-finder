@@ -1,4 +1,3 @@
-// SearchPage.js
 import React, { useState } from "react";
 import SearchResults from "./SearchResults";
 import "./SearchPage.css";
@@ -40,7 +39,7 @@ const SearchPage = () => {
   return (
     <div>
       <div className="wrapper">
-      <h1 className="popular-title">What's on the Menu Today?</h1>
+        <h1 className="popular-title">What's on the Menu Today?</h1>
         <h1 className="section-title">Find Recipes with Your Favorite Ingredients</h1>
 
         <div className="search-container">
@@ -53,7 +52,7 @@ const SearchPage = () => {
           <button onClick={handleSearch}>Search</button>
         </div>
 
-        <SearchResults searchResults={searchResults} />
+        <SearchResults searchResults={searchResults} searchIngredient={searchQuery} />
       </div>
     </div>
   );

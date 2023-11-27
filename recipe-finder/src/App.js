@@ -31,7 +31,7 @@ function App() {
               </>
             }
           />
-          <Route path="recipe/:name" element={<Recipe />} />
+        <Route path="/recipe/:name" element={<Recipe />} />
           <Route path="/recipe-form" element={<RecipeForm />} />
           <Route path="/recipe-explore" element={<RecipeComponent />} />
           <Route path="/my-recipes" element={<UserRecipes />} />

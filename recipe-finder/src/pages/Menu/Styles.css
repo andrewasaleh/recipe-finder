@@ -143,3 +143,8 @@ a {
     margin: 0 auto; 
     padding: 0px; 
   }
+
+  .search-ingredient {
+    color: #fc1919; 
+    font-size: 1 rem;
+  }
