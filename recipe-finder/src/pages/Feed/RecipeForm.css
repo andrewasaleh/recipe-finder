@@ -115,9 +115,25 @@ box {
   top: 30px;
 }
 
-.container3 {
-  border: 1px solid #ffffff;
+.container2 textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  margin-top: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
   border-radius: 4px;
-  margin-top: 10px;
+  box-sizing: border-box;
+}
 
+.description-input textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  margin-top: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
 }

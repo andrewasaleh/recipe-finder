@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase';
-import './RecipeComponent.css'; 
+import { useNavigate } from 'react-router-dom';  // Import useNavigate
+import './RecipeComponent.css';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import timeIcon from "../Assets/images/home/alarm.png";
 import servingsIcon from "../Assets/images/home/servings.png";
@@ -11,6 +12,7 @@ const RecipeComponent = () => {
   const [recipes, setRecipes] = useState([]);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();  // Use useNavigate instead of useHistory
 
   useEffect(() => {
     const auth = getAuth();
@@ -36,6 +38,12 @@ const RecipeComponent = () => {
     fetchRecipes();
   }, []);
 
+  const handleRecipeClick = (recipeId) => {
+    // Redirect to the new page for recipe details
+    navigate(`/recipe-details/${recipeId}`);
+  };
+
+  
   return (
     <div className="recipe-container">
       <h1 className="recipe-title">Community Recipes</h1>
@@ -46,7 +54,7 @@ const RecipeComponent = () => {
           {recipes && recipes.length > 0 ? (
             <div className="recipe-list">
               {recipes.map((recipe) => (
-                <div key={recipe.id} className="recipe-item">
+                <div key={recipe.id} className="recipe-item" onClick={() => handleRecipeClick(recipe.id)}>
                   <img src={recipe.image} alt={recipe.name} className="recipe-image" />
                   <div className="text-container">
                     <p className="recipe-description">{recipe.name}</p>
@@ -62,7 +70,7 @@ const RecipeComponent = () => {
                       <div className="icon-container">
                         <img src={createdByIcon} alt="Created by Icon" className="icon" />
                         <p className="time-text">
-                          {(recipe.username)}
+                          {recipe.username}
                         </p>
                       </div>
                     </div>
