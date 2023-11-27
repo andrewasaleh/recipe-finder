@@ -1,7 +1,8 @@
-// SearchResults.js
 import React from "react";
 import timeIcon from "../Assets/images/home/alarm.png";
 import servingsIcon from "../Assets/images/home/servings.png";
+import createdByIcon from "../Assets/images/home/created.png";
+
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
 
@@ -9,6 +10,12 @@ const SearchResults = ({ searchResults }) => {
   if (!Array.isArray(searchResults)) {
     return null;
   }
+
+  const limitCreditsText = (creditsText) => {
+    const regex = /^(.*?\.com)|([A-Z][a-z]+ [A-Z][a-z]+)$/;
+    const matches = creditsText.match(regex);
+    return matches ? matches[0] : "";
+  };
 
   return (
     <div className="wrapper">
@@ -43,17 +50,27 @@ const SearchResults = ({ searchResults }) => {
                     <p className="card-title">{recipe.title}</p>
                   </div>
                   <div className="button-container">
-                    <div className="icon-container left">
+                    <div className="icon-container">
                       <img src={timeIcon} alt="Time Icon" className="icon" />
                       <p className="time-text">{recipe.readyInMinutes} min</p>
                     </div>
-                    <div className="icon-container right">
+                    <div className="icon-container">
                       <img
                         src={servingsIcon}
                         alt="Servings Icon"
                         className="icon"
                       />
                       <p className="time-text">{recipe.servings} servings</p>
+                    </div>
+                    <div className="icon-container">
+                      <img
+                        src={createdByIcon}
+                        alt="Created by Icon"
+                        className="icon"
+                      />
+                      <p className="time-text">
+                        {limitCreditsText(recipe.creditsText)}
+                      </p>
                     </div>
                   </div>
                 </div>

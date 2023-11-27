@@ -61,7 +61,7 @@ function Signup() {
       });
 
       // Navigate to '/recipes'
-      navigate('/recipes');
+      navigate('/recipe-form');
     } catch (error) {
       console.error(error);
     }
@@ -80,11 +80,11 @@ function Signup() {
         </div>
         <div className="inputs">
           <form onSubmit={signup}>
-            <label>Full Name</label>
+            <label>Username</label>
             <div className="input">
               <input
                 type="text"
-                placeholder="Enter Full Name"
+                placeholder="Enter Username"
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
               />

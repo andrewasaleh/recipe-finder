@@ -1,13 +1,21 @@
+// Dessert.js
+import React, { useEffect, useState } from "react";
 import timeIcon from "../Assets/images/home/alarm.png";
 import servingsIcon from "../Assets/images/home/servings.png";
+import createdByIcon from "../Assets/images/home/created.png";
 
-import { useEffect, useState } from "react";
 import "@splidejs/splide/dist/css/splide.min.css";
 import "./Styles.css";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 
 function Dessert() {
-  const [Dessert, setDessert] = useState([]);
+  const [dessert, setDessert] = useState([]);
+
+ const limitCreditsText = (creditsText) => {
+    const regex = /^(.*?\.com)|([A-Z][a-z]+ [A-Z][a-z]+)$/;
+    const matches = creditsText.match(regex);
+    return matches ? matches[0] : "";
+  };
 
   useEffect(() => {
     getDessert();
@@ -55,7 +63,7 @@ function Dessert() {
             autoplay: true,
           }}
         >
-          {Dessert.map((recipe) => (
+          {dessert.map((recipe) => (
             <SplideSlide key={recipe.id}>
               <div className="card">
                 <a
@@ -82,14 +90,22 @@ function Dessert() {
                           {recipe.readyInMinutes} min
                         </p>
                       </div>
-                      <div className="icon-container right">
+                      <div className="icon-container center">
                         <img
                           src={servingsIcon}
                           alt="Servings Icon"
                           className="icon"
                         />
+                        <p className="time-text">{recipe.servings} servings</p>
+                      </div>
+                      <div className="icon-container right">
+                        <img
+                          src={createdByIcon}
+                          alt="Created by Icon"
+                          className="icon"
+                        />
                         <p className="time-text">
-                          {recipe.servings} servings
+                          {limitCreditsText(recipe.creditsText)}
                         </p>
                       </div>
                     </div>

@@ -24,7 +24,7 @@ const Login = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         console.log(userCredential);
-        navigate('/recipes');
+        navigate('/my-recipes');
       })
       .catch((error) => {
         

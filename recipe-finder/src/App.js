@@ -6,10 +6,10 @@ import Navbar from './pages/Home/Header';
 import Header from './pages/Home/Opening';
 import About from './pages/Home/About';
 import Presentation from './pages/Home/Preview';
-import Footer from './pages/Home/Footer';
-import RecipeComponent from './pages/Feed/RecipeComponent';
+import RecipeForm from './pages/Feed/RecipeForm';
 import Home from './pages/Menu/Home';
-
+import RecipeComponent from './pages/Feed/RecipeComponent';
+import UserRecipes from './pages/Feed/UserRecipes';
 
 function App() {
   return (
@@ -30,9 +30,10 @@ function App() {
               </>
             }
           />
-        <Route path="/recipes" element={<RecipeComponent />} />
+          <Route path="/recipe-form" element={<RecipeForm />} />
+          <Route path="/recipe-explore" element={<RecipeComponent />} />
+          <Route path="/my-recipes" element={<UserRecipes />} />
         </Routes>
-        <Footer />
       </Router>
     </div>
   );

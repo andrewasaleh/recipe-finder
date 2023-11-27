@@ -1,7 +1,9 @@
+// Trending.js
+import React, { useEffect, useState } from "react";
 import timeIcon from "../Assets/images/home/alarm.png";
 import servingsIcon from "../Assets/images/home/servings.png";
+import createdByIcon from "../Assets/images/home/created.png";
 
-import { useEffect, useState } from "react";
 import "@splidejs/splide/dist/css/splide.min.css";
 import "./Styles.css";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
@@ -9,6 +11,12 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 function Trending() {
   const [trending, setTrending] = useState([]);
 
+  const limitCreditsText = (creditsText) => {
+    const regex = /^(.*?\.com)|([A-Z][a-z]+ [A-Z][a-z]+)$/;
+    const matches = creditsText.match(regex);
+    return matches ? matches[0] : "";
+  };
+  
   useEffect(() => {
     getTrending();
   }, []);
@@ -82,7 +90,7 @@ function Trending() {
                           {recipe.readyInMinutes} min
                         </p>
                       </div>
-                      <div className="icon-container right">
+                      <div className="icon-container center">
                         <img
                           src={servingsIcon}
                           alt="Servings Icon"
@@ -90,6 +98,16 @@ function Trending() {
                         />
                         <p className="time-text">
                           {recipe.servings} servings
+                        </p>
+                      </div>
+                      <div className="icon-container right">
+                        <img
+                          src={createdByIcon}
+                          alt="Created by Icon"
+                          className="icon"
+                        />
+                        <p className="time-text">
+                          {limitCreditsText(recipe.creditsText)}
                         </p>
                       </div>
                     </div>

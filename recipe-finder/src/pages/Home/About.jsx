@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './About.css';
+import Footer from './Footer';
 
 function About() {
   const [contributors, setContributors] = useState([
     { username: 'andrewasaleh', role: 'Full Stack' },
-    { username: 'mchoi1129', role: 'Full Stack' },
-    { username: 'Deja-Who', role: 'Full Stack' },
+    { username: 'mchoi1129', role: 'Front-End' },
+    { username: 'Deja-Who', role: 'Front-End' },
   ]);
 
   useEffect(() => {
@@ -55,6 +56,7 @@ function About() {
           ))}
         </div>
       </div>
+      <Footer/>
     </section>
   );
 }

@@ -1,18 +1,27 @@
+// Import necessary dependencies and components
 import React from 'react';
+import { Link } from 'react-router-dom';
+import AuthDetails from '../../pages/LoginSignup/AuthDetails'; // Make sure to provide the correct path
+
+// Import your CSS file
 import './Header.css';
 
+// Functional component
 function Header() {
   return (
     <header className="header-container">
       <nav className="nav-bar">
         <div className="logo">
-          <a href="/" className="brand-name"> 🥣 RecipeFinder</a>
+          <Link to="/" className="brand-name"> RecipeFinder</Link>
         </div>
         <ul className="nav-links">
-          <li><a href="/" className="nav-link">Home</a></li>
-          <li><a href="/recipes" className="nav-link">Explore Recipes</a></li>
-          <li><a href="/signup" className="nav-link">Join the Culinary Adventure</a></li>
-          <li><a href="/login" className="nav-link rounded-login-button">Login</a></li>
+          <li><Link to="/" className="nav-link">Home</Link></li>
+          <li><Link to="/recipe-explore" className="nav-link">Explore Recipes</Link></li>
+          <li><Link to="/recipe-form" className="nav-link">Add Recipes </Link></li>
+          <li><Link to="/my-recipes" className="nav-link">My Recipes</Link></li>
+          <li><Link to="/signup" className="nav-link">Join the Culinary Adventure</Link></li>
+          <li><Link to="/login" className="nav-link">Login</Link></li>
+          <AuthDetails /> 
         </ul>
       </nav>
     </header>

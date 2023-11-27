@@ -5,7 +5,7 @@ const RecipeEntry = () => {
   const [recipes, setRecipes] = useState([]);
 
   const addRecipe = (newRecipe) => {
-    // Add the new recipe to the existing recipes
+
     setRecipes([...recipes, newRecipe]);
   };
 

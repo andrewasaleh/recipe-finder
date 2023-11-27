@@ -14,16 +14,17 @@ const RecipeForm = () => {
     preparation: [''],
     image: '',
     username: '', 
+    uid: '', // Add uid field
   });
 
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-
         setRecipeData((prevData) => ({
           ...prevData,
           username: user.displayName || user.email,
+          uid: user.uid, // Set the uid field
         }));
       }
     });
@@ -77,7 +78,7 @@ const RecipeForm = () => {
       const docRef = await addDoc(collection(db, 'recipes'), recipeData);
       console.log('Recipe added with ID: ', docRef.id);
   
-      // Reset the form after submission, but keep the username
+      // Reset the form after submission, but keep the username and uid
       setRecipeData({
         name: '',
         type: '',
@@ -87,6 +88,7 @@ const RecipeForm = () => {
         preparation: [''],
         image: '',
         username: recipeData.username, // Keep the username unchanged
+        uid: recipeData.uid, // Keep the uid unchanged
       });
     } catch (error) {
       console.error('Error adding recipe: ', error);
@@ -104,53 +106,42 @@ const RecipeForm = () => {
 
       <box> </box>
 
-      {/*<label>
-        Username:
-        <input type="text" name="username" value={recipeData.username} onChange={handleInputChange} disabled />
-      </label>
-      <br />*/}
+           <br />
 
-      <div class="container3">
-      <text_border>
-      <label>
-      Title of the Recipe :
-      </label>      
-      <input type="text" name="name" value={recipeData.name} onChange={handleInputChange} />
-      </text_border>
+      <div className="container3">
+        <text_border>
+          <label>
+            Title of the Recipe :
+          </label>
+          <input type="text" name="name" value={recipeData.name} onChange={handleInputChange} />
+        </text_border>
       </div>
-      
+
       <br />
 
-      <div class="container3">
-      <text_border>
-      <label>
-        Type of Food : 
-      </label>
-      <input type="text" name="type" value={recipeData.type} onChange={handleInputChange} />
-      </text_border>
-      
-      <test>
-      <text_border>
-      <label>
-        Duration (minutes) : 
-      </label>
-      <input type="number" name="duration" value={recipeData.duration} onChange={handleInputChange} />
-      </text_border>
-      </test>
-      
-      
-      <test>
-      <text_border>
-      <label>
-        Serving size : 
-      </label>
-      <input type="number" name="serving_size" value={recipeData.serving_size} onChange={handleInputChange} />
-      </text_border>
-      </test>
+      <div className="container3">
+        <text_border>
+          <label>
+            Type of Food :
+          </label>
+          <input type="text" name="type" value={recipeData.type} onChange={handleInputChange} />
+        </text_border>
 
+          <text_border>
+            <label>
+              Duration (minutes) :
+            </label>
+            <input type="number" name="duration" value={recipeData.duration} onChange={handleInputChange} />
+          </text_border>
+
+          <text_border>
+            <label>
+              Serving size :
+            </label>
+            <input type="number" name="serving_size" value={recipeData.serving_size} onChange={handleInputChange} />
+          </text_border>
       </div>
       
-
       <br />
 
       <div class="container2">
