@@ -10,6 +10,7 @@ import RecipeForm from './pages/Feed/RecipeForm';
 import Home from './pages/Menu/Home';
 import RecipeComponent from './pages/Feed/RecipeComponent';
 import UserRecipes from './pages/Feed/UserRecipes';
+import Recipe from './pages/Menu/Recipe';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
               </>
             }
           />
+          <Route path="recipe/:name" element={<Recipe />} />
           <Route path="/recipe-form" element={<RecipeForm />} />
           <Route path="/recipe-explore" element={<RecipeComponent />} />
           <Route path="/my-recipes" element={<UserRecipes />} />
