@@ -1,6 +1,4 @@
-/* RecipeDetailsPage.css */
-
-.recipe-details-container {
+  .recipe-details-container {
     margin-top: 10rem;
     margin-bottom: 5rem;
     margin-left: 0.5in;
@@ -22,9 +20,9 @@
   }
   
   .recipe-details-text {
-    flex-grow: 1; /* Allow the text container to grow */
-    margin-left: 1rem; /* Adjust margin as needed */
-    max-width: calc(100% - 1.5in); /* Calculate the maximum width, considering margins */
+    flex-grow: 1; 
+    margin-left: 1rem; 
+    max-width: calc(100% - 1.5in); 
   }
   
   .recipe-details-section {
@@ -44,7 +42,7 @@
   }
   
   .recipe-details-text ul {
-    list-style-type: disc; /* or 'circle' or 'square' depending on your preference */
+    list-style-type: disc; 
     padding: 0;
     margin: 10;
   }

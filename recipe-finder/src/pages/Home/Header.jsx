@@ -1,9 +1,6 @@
-// Import necessary dependencies and components
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AuthDetails from '../../pages/LoginSignup/AuthDetails'; // Make sure to provide the correct path
-
-// Import your CSS file
+import AuthDetails from '../../pages/LoginSignup/AuthDetails'; 
 import './Header.css';
 
 // Functional component

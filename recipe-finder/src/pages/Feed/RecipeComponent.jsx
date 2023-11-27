@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase';
-import { useNavigate } from 'react-router-dom';  // Import useNavigate
+import { useNavigate } from 'react-router-dom';  
 import './RecipeComponent.css';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import timeIcon from "../Assets/images/home/alarm.png";
@@ -12,7 +12,7 @@ const RecipeComponent = () => {
   const [recipes, setRecipes] = useState([]);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();  // Use useNavigate instead of useHistory
+  const navigate = useNavigate();  
 
   useEffect(() => {
     const auth = getAuth();
