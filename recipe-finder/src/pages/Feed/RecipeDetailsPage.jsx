@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
-import './RecipeDetailsPage.css'; 
+import './RecipeDetailsPage.css';
 
 const RecipeDetailsPage = () => {
   const { recipeId } = useParams();
   const [recipeDetails, setRecipeDetails] = useState(null);
   const [activeTab, setActiveTab] = useState('instructions');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchRecipeDetails = async () => {
@@ -35,6 +36,9 @@ const RecipeDetailsPage = () => {
   return (
     <div className="recipe-details-container">
       <div>
+        <button className="back-button" onClick={() => navigate('/recipe-explore')}>
+          Back
+        </button>
         <h2 className="recipe-details-title">{recipeDetails.name}</h2>
         <img src={recipeDetails.image} alt={recipeDetails.name} className="recipe-details-image" />
       </div>

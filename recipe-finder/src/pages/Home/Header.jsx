@@ -20,7 +20,7 @@ function Header() {
           {user && (
             <>
               <li><Link to="/recipe-form" className="nav-link">Add Recipes</Link></li>
-              <li><Link to="/my-recipes" className="nav-link">My Recipes</Link></li>
+              {/* <li><Link to="/my-recipes" className="nav-link">My Recipes</Link></li> */}
             </>
           )}
           {!user && (

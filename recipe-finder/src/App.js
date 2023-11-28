@@ -9,7 +9,7 @@ import Presentation from './pages/Home/Preview';
 import RecipeForm from './pages/Feed/RecipeForm';
 import Home from './pages/Menu/Home';
 import RecipeComponent from './pages/Feed/RecipeComponent';
-import UserRecipes from './pages/Feed/UserRecipes';
+// import UserRecipes from './pages/Feed/UserRecipes';
 import Recipe from './pages/Menu/Recipe';
 import RecipeDetailsPage from './pages/Feed/RecipeDetailsPage';
 
@@ -37,7 +37,7 @@ function App() {
           <Route path="/recipe/:name" element={<Recipe />} />
           <Route path="/recipe-form" element={<RecipeForm />} />
           <Route path="/recipe-explore" element={<RecipeComponent />} />
-          <Route path="/my-recipes" element={<UserRecipes />} />
+          {/* <Route path="/my-recipes" element={<UserRecipes />} /> */}
           <Route path="/recipe-details/:recipeId" element={<RecipeDetailsPage />} />
         </Routes>
       </Router>

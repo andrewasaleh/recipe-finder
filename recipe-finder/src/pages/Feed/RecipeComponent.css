@@ -99,7 +99,65 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
+.recipe-details-button:hover {
+  background-color: #e6e6e6;
+}
+
 .button-container:hover {
   background: linear-gradient(to right, #fcc319, #ffbf00);
 }
 
+.recipe-actions {
+  position: absolute;
+  top: 8px; 
+  right: 8px; 
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 1; 
+}
+
+.delete-button,
+.modify-button {
+  background-color: rgba(0, 0, 0, 0.53); 
+  color: #fff; 
+  padding: 8px 12px; 
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+
+.delete-button:hover,
+.modify-button:hover {
+  background-color: #070707; 
+}
+
+.delete-button:active,
+.modify-button:active {
+  background-color: #b52b27; 
+}
+
+.delete-button img,
+.modify-button img {
+  width: 30px; 
+  height: 30px;
+}
+
+.back-button {
+  padding: 1rem 2rem;
+  color: #313131;
+  background: white;
+  border: 2px solid black;
+  margin-right: 2rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  background-color: #e6e6e6;
+}
+
+.back-button::before {
+  margin-right: 5px; 
+}
