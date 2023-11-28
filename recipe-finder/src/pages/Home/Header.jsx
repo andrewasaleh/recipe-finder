@@ -6,7 +6,7 @@ import './Header.css';
 
 // Functional component
 function Header() {
-  const { user } = useAuth();  // Use your custom hook to get user information
+  const { user } = useAuth();  
 
   return (
     <header className="header-container">

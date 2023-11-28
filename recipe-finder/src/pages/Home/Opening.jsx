@@ -1,13 +1,25 @@
-import React from 'react';
-import './Opening.css';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../../firebase'; 
+
+import './Opening.css';
 import Bowl from '../Assets/videos/Bowl.mp4';
 
 function Opening() {
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (authUser) => {
+      setUser(authUser);
+    });
+
+    return () => unsubscribe();
+  }, []);
+
   const handleButtonClick = () => {
-    navigate('/Signup');
+    navigate('/signup');
   };
 
   return (
@@ -22,11 +34,13 @@ function Opening() {
         <p className="details">
           Find a wide variety of mouthwatering recipes to satisfy your cravings
         </p>
-        <div className="center-container">
-          <a href="/signup" className="cv-btn" onClick={handleButtonClick}>
-            Get Started
-          </a>
-        </div>
+        {user === null && (
+          <div className="center-container">
+            <a href="/signup" className="cv-btn" onClick={handleButtonClick}>
+              Get Started
+            </a>
+          </div>
+        )}
       </div>
     </div>
   );

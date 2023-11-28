@@ -73,11 +73,21 @@ const RecipeForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
+    // Check if any required field is empty
+    const requiredFields = ['name', 'type', 'duration', 'serving_size', 'description', 'ingredients', 'preparation'];
+    const missingFields = requiredFields.filter(field => !recipeData[field]);
+  
+    if (missingFields.length > 0) {
+      // Display an error message or notification about the missing fields
+      alert(`Please fill out all required fields: ${missingFields.join(', ')}`);
+      return;
+    }
+  
     try {
       const docRef = await addDoc(collection(db, 'recipes'), recipeData);
       console.log('Recipe added with ID: ', docRef.id);
-
+  
       // Reset the form after submission, but keep the username and uid
       setRecipeData({
         name: '',
