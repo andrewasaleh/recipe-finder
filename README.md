@@ -15,7 +15,7 @@ Welcome to RecipeFinder, a web platform that enables users to discover, post, an
 
 ## 1. Website URL
 
-Visit the RecipeFinder platform at [http://willbeupdated](http://willbeupdated).
+RecipeFinder hosted on Linux Server
 
 ### 1.1 Features
 - User Profiles: Simple registration and login system allowing users to maintain their collection of recipes.
