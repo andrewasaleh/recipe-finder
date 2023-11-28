@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
-import './RecipeDetailsPage.css'; // Include your CSS file
+import './RecipeDetailsPage.css'; 
 
 const RecipeDetailsPage = () => {
   const { recipeId } = useParams();

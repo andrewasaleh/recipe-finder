@@ -100,7 +100,7 @@ const RecipeForm = () => {
     <form className="recipe-form-container" onSubmit={handleSubmit}>
       <h2>
         <div style={{ fontSize: 40 }}>
-          Welcome {recipeData.username}, Share us your idea
+        Hey {recipeData.username}! Ready to create a delicious recipe?
         </div>
       </h2>
 

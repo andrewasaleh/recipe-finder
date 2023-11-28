@@ -6,7 +6,7 @@ import './Divider.css';
 function Preview() {
   const handleExploreClick = () => {
     // Redirect to the recipes page
-    window.location.href = '/recipes';
+    window.location.href = '/recipe-explore';
   };
 
   return (

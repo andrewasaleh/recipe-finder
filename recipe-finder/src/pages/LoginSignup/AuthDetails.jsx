@@ -9,9 +9,12 @@ const AuthDetails = () => {
     useEffect(() => {
         const listen = onAuthStateChanged(auth, (user) => {
             if (user) {
-                setAuthUser(user)
+                setAuthUser(user);
             } else {
                 setAuthUser(null);
+                setTimeout(() => {
+                    setAuthUser(undefined); // Reset authUser after 10 seconds
+                }, 10000); // 10000 milliseconds = 10 seconds
             }
         });
 
@@ -22,8 +25,8 @@ const AuthDetails = () => {
 
     const userSignOut = () => {
         signOut(auth).then(() => {
-            console.log('sign out successful')
-        }).catch(error => console.log(error))
+            console.log('Sign out successful');
+        }).catch(error => console.log(error));
     }
 
     // Do not render anything if authUser is undefined
@@ -35,7 +38,7 @@ const AuthDetails = () => {
         <div className="auth-details-container">
             {authUser ? (
                 <>
-                    <p className="signed-in-info">{`Signed In as ${authUser.displayName || authUser.email}`} <button className="sign-out-btn" onClick={userSignOut}>Sign Out</button></p> 
+                    <p className="signed-in-info">{`Signed In as ${authUser.displayName || authUser.email}`} <button className="sign-out-btn" onClick={userSignOut}>Sign Out</button></p>
                 </>
             ) : (
                 <p> Signed Out </p>

@@ -14,10 +14,12 @@ import Recipe from './pages/Menu/Recipe';
 import RecipeDetailsPage from './pages/Feed/RecipeDetailsPage';
 
 function App() {
+  const [user, setUser] = React.useState(/* initial user state */);
+
   return (
     <div className="App">
       <Router>
-        <Navbar />
+        <Navbar user={user} />
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
@@ -32,7 +34,7 @@ function App() {
               </>
             }
           />
-        <Route path="/recipe/:name" element={<Recipe />} />
+          <Route path="/recipe/:name" element={<Recipe />} />
           <Route path="/recipe-form" element={<RecipeForm />} />
           <Route path="/recipe-explore" element={<RecipeComponent />} />
           <Route path="/my-recipes" element={<UserRecipes />} />

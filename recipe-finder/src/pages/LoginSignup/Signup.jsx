@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../../firebase';
 import './LoginSignup.css';
+import Footer from '../Home/Footer';
 
 import showPasswordIcon from '../Assets/images/LoginSignup/show-image.png';
 import hidePasswordIcon from '../Assets/images/LoginSignup/hide-image.png';
@@ -148,6 +149,7 @@ function Signup() {
         <div className="redirect-login">
           Already have an account? <Link to="/login">Login</Link>
         </div>
+        <Footer />
       </div>
     </div>
   );

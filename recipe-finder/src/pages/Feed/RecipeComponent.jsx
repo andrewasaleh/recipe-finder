@@ -7,6 +7,8 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import timeIcon from "../Assets/images/home/alarm.png";
 import servingsIcon from "../Assets/images/home/servings.png";
 import createdByIcon from "../Assets/images/home/created.png";
+import Footer from '../Home/Footer';
+
 
 const RecipeComponent = () => {
   const [recipes, setRecipes] = useState([]);
@@ -58,7 +60,7 @@ const RecipeComponent = () => {
                   <img src={recipe.image} alt={recipe.name} className="recipe-image" />
                   <div className="text-container">
                     <p className="recipe-description">{recipe.name}</p>
-                    <div className="button-container">
+                    <div className="recipe-button-container">
                       <div className="icon-container">
                         <img src={timeIcon} alt="Time Icon" className="icon" />
                         <p className="time-text">{recipe.duration} min</p>
@@ -83,6 +85,7 @@ const RecipeComponent = () => {
           )}
         </>
       )}
+      <Footer className="footer-recipe-component" />
     </div>
   );
 };
