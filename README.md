@@ -1,4 +1,4 @@
-# RecipeFinder Documentation
+# recipe-finder Documentation
 
 Welcome to RecipeFinder, a web platform that enables users to discover, post, and share culinary recipes. This documentation will guide you through the setup process and provide an overview of the key features.
 
